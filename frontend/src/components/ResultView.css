@@ -1,0 +1,184 @@
+.result-view {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.result-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.result-header h2 {
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.result-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.source-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.source-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.source-link:hover {
+  text-decoration: underline;
+}
+
+.processing-time {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.section-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.section-tabs button {
+  padding: 0.75rem 1.25rem;
+  background-color: var(--bg-color);
+  color: var(--text-secondary);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.section-tabs button:hover {
+  background-color: var(--border-color);
+}
+
+.section-tabs button.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.section-content {
+  padding: 1.5rem;
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  line-height: 1.8;
+  min-height: 200px;
+}
+
+.section-content h1,
+.section-content h2,
+.section-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.section-content h1 {
+  font-size: 1.8rem;
+}
+
+.section-content h2 {
+  font-size: 1.5rem;
+}
+
+.section-content h3 {
+  font-size: 1.25rem;
+}
+
+.section-content p {
+  margin-bottom: 1rem;
+}
+
+.section-content ul,
+.section-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-content li {
+  margin-bottom: 0.5rem;
+}
+
+.section-content code {
+  background-color: var(--card-bg);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+}
+
+.feedback-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.feedback-prompt {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.feedback-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.feedback-yes,
+.feedback-no {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.feedback-yes {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.feedback-yes:hover {
+  background-color: #059669;
+}
+
+.feedback-no {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.feedback-no:hover {
+  background-color: #475569;
+}
+
+.feedback-thanks {
+  margin-top: 1rem;
+  color: var(--success-color);
+  font-weight: 500;
+}
+
+.markdown-info {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--bg-color);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
