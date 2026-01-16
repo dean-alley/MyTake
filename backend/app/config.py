@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     voice_profile_path: Path = data_dir / "voice_profile.json"
 
     # AI Settings
-    claude_model: str = "claude-3-5-sonnet-20241022"
+    claude_model: str = "claude-3-haiku-20240307"
     claude_max_tokens: int = 4096
 
     # Application Settings

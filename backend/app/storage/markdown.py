@@ -33,11 +33,21 @@ class MarkdownGenerator:
         what_i_say_simple: str,
         what_i_say_deep: str,
         content_id: int = None,
-        created_at: datetime = None
+        created_at = None
     ) -> str:
         """Generate markdown content."""
 
-        created_str = (created_at or datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
+        if created_at is None:
+            created_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        elif isinstance(created_at, str):
+            # Parse ISO format string
+            try:
+                dt = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                created_str = dt.strftime("%Y-%m-%d %H:%M:%S")
+            except:
+                created_str = created_at[:19]  # Take first 19 chars (date and time)
+        else:
+            created_str = created_at.strftime("%Y-%m-%d %H:%M:%S")
 
         markdown = f"""# {title}
 
