@@ -51,6 +51,21 @@ This means:
 
 No black box. No magic. Just control.
 
+### Voice Profile v2.0: Content Creation Framework
+
+The voice profile now supports a richer framework for content creation through **reaction and reframing**:
+
+**Core Philosophy**: You don't create content from scratch - you create content through reaction and reframing. Your best insights come when you encounter something that resonates, then process it through your unique lens.
+
+**New Profile Features**:
+- **Unique Filters**: Define your perspective lenses (e.g., "The AI-First Practitioner", "The Working Creative")
+- **Processing Questions**: Questions to run content through ("What's my lived experience with this?")
+- **Content Sweet Spots**: Topics where your voice shines
+- **Voice Markers**: Authentic expressions and speech patterns
+- **Background Context**: Lived experience for grounding responses
+
+See `backend/voice_profile.example.json` for a complete example of the v2.0 profile format.
+
 ## Architecture
 
 ### Tech Stack

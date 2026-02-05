@@ -90,6 +90,7 @@ class VoiceProfile:
         traits = self.profile["personality_traits"]
         phrases = self.profile["example_phrases"]
 
+        # Build base context
         context = f"""When writing in my voice, use these guidelines:
 
 TONE & STYLE:
@@ -117,6 +118,54 @@ STRUCTURAL PREFERENCES:
 - Use subheadings: {prefs['structural']['use_subheadings']}
 - Paragraph length: {prefs['structural']['paragraph_length']}
 """
+
+        # Add core philosophy if present (v2.0+ profiles)
+        if "core_philosophy" in self.profile:
+            philosophy = self.profile["core_philosophy"]
+            context += f"""
+CORE PHILOSOPHY:
+{philosophy.get('insight', '')}
+"""
+
+        # Add unique filters if present (v2.0+ profiles)
+        if "unique_filters" in self.profile:
+            filters = self.profile["unique_filters"]
+            context += "\nUNIQUE PERSPECTIVE FILTERS (process content through these lenses):\n"
+            for key, filter_data in filters.items():
+                context += f"- {filter_data['name']}: {filter_data['description']}\n"
+
+        # Add processing questions if present (v2.0+ profiles)
+        if "processing_questions" in self.profile:
+            questions = self.profile["processing_questions"]
+            context += f"""
+QUESTIONS TO ASK WHEN CREATING 'MY TAKE':
+{chr(10).join(f'- {q}' for q in questions)}
+"""
+
+        # Add content sweet spots if present (v2.0+ profiles)
+        if "content_sweet_spots" in self.profile:
+            sweet_spots = self.profile["content_sweet_spots"]
+            context += f"""
+CONTENT SWEET SPOTS (topics where this voice shines):
+{chr(10).join(f'- {spot}' for spot in sweet_spots)}
+"""
+
+        # Add voice markers if present (v2.0+ profiles)
+        if "voice_markers" in self.profile:
+            markers = self.profile["voice_markers"]
+            if "authentic_expressions" in markers:
+                context += f"""
+AUTHENTIC EXPRESSIONS:
+{chr(10).join(f'- "{expr}"' for expr in markers['authentic_expressions'])}
+"""
+
+        # Add background context if present (v2.0+ profiles)
+        if "background_context" in self.profile:
+            bg = self.profile["background_context"]
+            context += "\nBACKGROUND CONTEXT (for grounding responses in lived experience):\n"
+            for key, value in bg.items():
+                context += f"- {key.replace('_', ' ').title()}: {value}\n"
+
         return context
 
     def update_from_feedback(self, feedback: Dict):
