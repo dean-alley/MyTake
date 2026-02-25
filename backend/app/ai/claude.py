@@ -15,9 +15,9 @@ class ClaudeClient:
 
     def __init__(self, api_key: str = None):
         self.api_key = api_key or settings.anthropic_api_key
+
         if not self.api_key:
             raise ValueError("Anthropic API key not configured. Please set ANTHROPIC_API_KEY in .env")
-
         self.client = Anthropic(api_key=self.api_key)
         self.model = settings.claude_model
         self.max_tokens = settings.claude_max_tokens
@@ -98,5 +98,19 @@ class ClaudeClient:
             return False
 
 
-# Global Claude client instance
-claude_client = ClaudeClient()
+# Global Claude client — instantiated lazily so import works without an API key
+_claude_client: "ClaudeClient | None" = None
+
+def get_claude_client() -> "ClaudeClient":
+    global _claude_client
+    if _claude_client is None:
+        _claude_client = ClaudeClient()
+    return _claude_client
+
+# Legacy alias used throughout the codebase
+class _LazyClient:
+    """Proxy that defers ClaudeClient creation until first use."""
+    def __getattr__(self, name):
+        return getattr(get_claude_client(), name)
+
+claude_client = _LazyClient()
